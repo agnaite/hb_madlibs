@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <p>There was a {{ color }} {{ noun }} sitting in the Hackbright Lab. When {{ person }} went to pick it up, it burst into flames in a totally {{ adj }} way.</p>
+    <h1>WEATHER:</h1>
+    {% for condition in weather %}
+    <p>{{ condition }}</p>
+    {% endfor %}
+{% endblock %}

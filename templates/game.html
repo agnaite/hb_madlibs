@@ -1,0 +1,32 @@
+<html>
+<head>
+    <title>Game</title>
+    <link rel="stylesheet" type="text/css" href="/static/madlibs.css">
+
+</head>
+<body>
+    <form class="game-form" action="/madlib">
+        <label for="person-field">Enter person:
+            <input type="text" name="person" id="person-field">
+        </label><br>
+        <label for="color-field">Choose color:
+            <select name="color" id="color-field">
+            <option id="blue" value="blue">Blue</option>
+            <option id="purple" value="purple">Purple</option>
+            <option id="green" value="green">Green</option></select>
+        </label><br>
+        <label for="noun-field">Enter a noun:
+            <input type="text" name="noun" id="noun-field">
+        </label><br>
+        <label for="adj-field">Enter an adjective:
+            <input type="text" name="adj" id="adj-field">
+        </label><br>
+        <label for="weather-field">Select weather:
+            <input type="checkbox" name="weather" value="foggy">Foggy
+            <input type="checkbox" name="weather" value="cloudy">Cloudy
+            <input type="checkbox" name="weather" value="rainy">Rainy
+        </label><br>
+        <input type="submit">
+    </form>
+</body>
+</html>
