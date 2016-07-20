@@ -5,7 +5,13 @@
   <link rel="stylesheet" type="text/css" href="/static/madlibs.css">
 </head>
 <body>
-    <h1 class="greeting">Hi {{ person }}! I think you're {{ compliment }}!</h1>
+    <h1 class="greeting">Hi {{ person }}!</h1>
+    <h1 class="greeting">I think you're 
+        {% for compliment in compliments[:-1] %}
+            {{ compliment }} and
+        {% endfor %}
+        {{ compliments[-1] }}.
+    </h1>
     <form class="home-form" action="/game">
         Would you like to play a game?
         <label><input type="radio" name="game" value="yes">Yes</label>

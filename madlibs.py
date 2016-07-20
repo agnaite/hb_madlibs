@@ -1,4 +1,4 @@
-from random import choice
+from random import choice, sample
 
 from flask import Flask, render_template, request
 
@@ -26,17 +26,19 @@ def say_hello():
     return render_template("hello.html")
 
 
-@app.route('/greet', methods=["POST"])
+@app.route('/greet', methods=["POST", "GET"])
 def greet_person():
     """Greet user."""
+    if request.method == "POST":
+        player = request.form.get("person")
+    else:
+        player = request.args.get("person")
 
-    player = request.form.get("person")
-
-    compliment = choice(AWESOMENESS)
+    compliment = sample(AWESOMENESS, 3)
 
     return render_template("compliment.html",
                            person=player,
-                           compliment=compliment)
+                           compliments=compliment)
 
 @app.route('/game')
 def show_madlib_form():
@@ -54,20 +56,23 @@ def show_madlib_form():
 def show_madlib():
     """Start the madlib game."""
 
+    random_story = choice(['madlib.html', 'madlib2.html'])
+
     person = request.args.get('person')
     color = request.args.get('color')
     noun = request.args.get('noun')
     adj = request.args.get('adj')
     weather = request.args.getlist('weather')
+    weather_list_length = len(weather)
+    
 
-    print weather
-
-    return render_template("madlib.html", 
+    return render_template(random_story, 
                             person=person, 
                             color=color, 
                             noun=noun, 
                             adj=adj,
-                            weather=weather)
+                            weather=weather,
+                            weather_list_length=weather_list_length)
 
 
 if __name__ == '__main__':
